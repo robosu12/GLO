@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="grodom_ros1" type="grodom_ros1" name="grodom_ros1"
+    args="$(find grodom_ros1)/params/3DSLAM_kitti.yaml"
+    output="screen"/>
+
+  <arg name="rviz" default="true" />
+  <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz"
+    args="-d $(find grodom_ros1)/rviz/grodom_rviz.rviz" />
+  </group>
+</launch>

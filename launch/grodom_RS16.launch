@@ -1,0 +1,20 @@
+<launch>
+  <node pkg="grodom_ros1" type="grodom_ros1" name="grodom_ros1"
+    args="$(find grodom_ros1)/params/3DSLAM_RS16.yaml"
+    output="screen"/>
+
+  <arg name="rviz" default="true" />
+  <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz"
+    args="-d $(find grodom_ros1)/rviz/grodom_rviz.rviz" />
+  </group>
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="T_map_leica"
+      args="-0.24 -0.01 -0.33 0.0 0.0 0.0 map leica"/> -->
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="T_Body_Prism"
+      args="-0.293656 -0.012288 -0.273095 0.0 0.0 0.0 imu leica"/>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="T_Lidar_Body"
+      args="0.050 0.000 -0.055 0.0 0.0 0.0 velodyne imu"/> -->
+</launch>

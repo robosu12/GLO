@@ -1,0 +1,103 @@
+grslam:
+    t_lo: [1.0, 0.0, 0.0, 0.01, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+    t_li: [1.0, 0.0, 0.0, 0.01, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+    t_lu: [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -0.48, 0.0, 0.0, 1.0, 0.0]
+    t_go: [1.0, 0.0, 0.0, 0.2, 0.0, 1.0, 0.0, -0.1, 0.0, 0.0, 1.0, 0.0]
+
+    is_debug: true
+    publish_tf: true
+    publish_path: true
+    publish_cloud: true
+
+    cloud_topic_name: "/os1_cloud_node1/points"  # /livox/lidar  /velodyne_points /rslidar_points /os1_points
+    scan_topic_name: "/scan_xxx"  
+    wheel_odom_topic_name: "/odom"    # /odom /robot_fusion_odom
+    uwb_topic_name: "/uwb_rtls1"     
+    gps_topic_name: "/gps"            # /gps /gps_rtk
+    vis_gps_topic_name: "/gps_rtk"       # /gps /gps_rtk
+    imu_topic_name: "/spatial_imu"    # /livox/imu /spatial_imu
+    map_path: "/home/suyun/map_data"
+
+    dataset_mode: 2        # 0:real data; 1: kitti; 2: NUT;
+    kitti_sequence: "07"
+    dataset_path: /home/suyun/CVTE/dataset/dataset-3D/kitti
+
+    use_lidar: true
+    use_odom: false
+    use_imu: false
+    use_uwb: false
+    use_gps: false
+    use_map_height_constraint: false
+    use_gravity_constraint: false
+    use_local_ground_constraint: false
+    use_global_ground_constraint: false
+    use_gyr_constraint: false
+
+    # feature_config:
+    lidar_type: "sensor1/os_sensor"      # livox; 2D
+    lidar_undistortion: 0    # 0-不畸变校正；1-imu畸变校正；2-里程计畸变校正;3-匀速运动模型校正
+    seg_method: 0            # 0-不分割滤波；1-使用空间聚类分割滤波；
+    small_cluster_radius: 0.8
+    small_cluster_num: 3
+    min_feature_points: 50
+
+    laser_min_range: 1.0
+    laser_max_range: 70.0
+    max_match_range: 60.0
+    laser_min_height: -100.0
+    laser_max_height: 100.0
+    near_back_remove: 1 # 去除后方跟随行人； 0-不进行去除；1-去除后侧；2-去除右侧；
+
+    search_method: 2 #搜索方法： 1-kdtree; 2-ivox
+    use_hierachy_vox: true
+
+    surf_size_odom: 0.4
+    vox_size_odom: 0.8
+    nearby_type_odom: 5  # 近邻模型：0-center; 1-7; 2-19; 3-27; 4-81; 5-125;
+    near_search_num_odom: 5
+    surround_map_size_odom: 120000
+
+    surf_size: 0.4
+    vox_size: 0.8
+    nearby_type: 3   
+    near_search_num: 5
+    surround_map_size: 120000
+
+    # backend_config:
+    plane_mode: false  # true-2D; false-3D
+    global_map_mode: 2 # 2-2D; 3-3D
+
+    match_keep_ratio: 0.98
+    use_prob_match: false
+    new_add_prob: 30.0
+    dynamic_cloud_remove: false
+    keyframe_fusion_size: 1
+
+    trans_threshold: 0.3 #帧创建平移判断阈值(m) 0.35
+    angle_threshold: 3.14 #帧创建旋转判断阈值(rad) 0.4 0.8
+    time_threshold: 30.0 #帧创建时间阈值 0.5 1.0
+    imu_time_threshold: 0.15
+    angular_threshold: 0.2 #帧创建角速度阈值 0.1 0.3
+    max_match_dis: 4.0
+
+    min_success_match_error: 9.9
+    min_match_overlap_ratio: 0.5
+
+    view_map_min_prob: -1.0
+    view_map_max_height: 100.0
+    view_map_min_height: -100.0
+
+    save_keyPose_to_file: true
+    save_runinfo_to_file: true 
+
+    # imu
+    imu_freq: 100
+    imu_comp_gain: 0.001
+    imu_smooth_window: 100
+    imu_q_smooth_ratio: 0.002
+    gravity_weight_ratio: 5.0
+    ground_weight_ratio: 5.0
+    gyr_yaw_weight_ratio: 0.2
+    gyr_pitch_weight_ratio: 0.2
+    gyr_roll_weight_ratio: 0.2
+    global_gravity_weight_ratio: 0.02

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>grodom_ros1</name>
+  <version>1.0.0</version>
+  <description>The grodom_ros1 package</description>
+
+  <maintainer email="robosu12@gmail.com">YunSu</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>roscpp</build_depend>
+
+  <run_depend>roscpp</run_depend>
+
+
+  <export></export>
+</package>
